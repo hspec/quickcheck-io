@@ -5,7 +5,7 @@ assertions as QuickCheck properties.
 
 Why would you want to do this?
 
-### Convenient testing of IO actions
+## Convenient testing of IO actions
 
 Example: Setting an environment variable with `setEnv` and then getting the
 value back with `getEnv` should work for _arbitrary_ key–value pairs.  Sounds
@@ -27,10 +27,10 @@ validKey   k = (not . null) k && '\NUL' `notElem` k && '=' `notElem` k
 validValue v = (not . null) v && '\NUL' `notElem` v
 ```
 
-    ghci>>> quickCheck prop_setEnv
+    ghci> quickCheck prop_setEnv
     +++ OK, passed 100 tests.
 
-### Better error messages for failing QuickCheck properties
+## Better error messages for failing QuickCheck properties
 
 You can e.g. use HUnit's `@?=`
 
