@@ -3,6 +3,7 @@ version:          0.1.0
 synopsis:         Use HUnit assertions as QuickCheck properties
 description:      This package provides an orphan instance that allows you to
                   use HUnit assertions as QuickCheck properties.
+category:         Testing
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2013 Simon Hengel
@@ -10,6 +11,10 @@ author:           Simon Hengel <sol@typeful.net>
 maintainer:       Simon Hengel <sol@typeful.net>
 build-type:       Simple
 cabal-version:    >= 1.8
+
+source-repository head
+  type: git
+  location: https://github.com/sol/quickcheck-io
 
 library
   ghc-options:
