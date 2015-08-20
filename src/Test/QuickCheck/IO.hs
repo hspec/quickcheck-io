@@ -16,4 +16,10 @@ propertyIO action = ioProperty $ do
 #else
 propertyIO action = morallyDubiousIOProperty $ do
 #endif
-  (action >> return succeeded) `E.catch` \(HUnitFailure err) -> return failed {reason = err}
+  (action >> return succeeded) `E.catch`
+#if MIN_VERSION_HUnit(1,3,0)
+    \(HUnitFailure _ err) ->
+#else
+    \(HUnitFailure err) ->
+#endif
+      return failed {reason = err}
