@@ -1,0 +1,22 @@
+name: quickcheck-io
+version: 0.1.1
+synopsis: Use HUnit assertions as QuickCheck properties
+description: |
+  This package provides an orphan instance that allows you to
+  use HUnit assertions as QuickCheck properties.
+category: Testing
+license: MIT
+copyright: (c) 2013 Simon Hengel
+author: Simon Hengel <sol@typeful.net>
+maintainer: Simon Hengel <sol@typeful.net>
+
+github: hspec/quickcheck-io
+
+ghc-options: -Wall
+dependencies:
+  - QuickCheck  >= 2.5.1
+  - HUnit       >= 1.2.5
+  - base        == 4.*
+
+library:
+  source-dirs: src
