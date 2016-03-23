@@ -3,7 +3,7 @@
 module Test.QuickCheck.IO where
 
 import qualified Control.Exception as E
-import           Test.HUnit.Lang (Assertion, HUnitFailure(..))
+import           Test.HUnit.Lang
 import           Test.QuickCheck.Property
 
 instance Testable Assertion where
@@ -24,4 +24,8 @@ propertyIO action = morallyDubiousIOProperty $ do
 #else
     \(HUnitFailure err) ->
 #endif
+#if MIN_VERSION_HUnit(1,5,0)
+      return failed {reason = formatFailureReason err}
+#else
       return failed {reason = err}
+#endif
