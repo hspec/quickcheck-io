@@ -8,7 +8,9 @@ import           Test.QuickCheck.Property
 
 instance Testable Assertion where
   property = propertyIO
+#if !MIN_VERSION_QuickCheck(2,9,0)
   exhaustive _ = True
+#endif
 
 propertyIO :: Assertion -> Property
 #if MIN_VERSION_QuickCheck(2,7,0)
