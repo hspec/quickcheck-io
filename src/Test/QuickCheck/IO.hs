@@ -16,14 +16,17 @@ instance Testable Assertion where
 
 propertyIO :: Assertion -> Property
 propertyIO action = ioProperty $ do
-  (action >> return succeeded) `E.catch`
+  (action >> return succeeded) `E.catch` \ e ->
+    return failed {theException = Just (E.toException e), reason = formatAssertion e}
+  where
+    formatAssertion e = case e of
 #if MIN_VERSION_HUnit(1,3,0)
-    \(HUnitFailure _ err) ->
+      HUnitFailure _ err ->
 #else
-    \(HUnitFailure err) ->
+      HUnitFailure err ->
 #endif
 #if MIN_VERSION_HUnit(1,5,0)
-      return failed {reason = formatFailureReason err}
+        formatFailureReason err
 #else
-      return failed {reason = err}
+        err
 #endif
