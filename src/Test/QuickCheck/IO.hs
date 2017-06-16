@@ -4,7 +4,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Test.QuickCheck.IO where
 
-import           Control.Exception
+import qualified Control.Exception as E
 import           Test.HUnit.Lang
 import           Test.QuickCheck.Property
 
@@ -16,7 +16,7 @@ instance Testable Assertion where
 
 propertyIO :: Assertion -> Property
 propertyIO action = ioProperty $ do
-  (action >> return succeeded) `catch`
+  (action >> return succeeded) `E.catch`
 #if MIN_VERSION_HUnit(1,3,0)
     \(HUnitFailure _ err) ->
 #else
