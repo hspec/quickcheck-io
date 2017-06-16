@@ -6,7 +6,7 @@ description: |
   use HUnit assertions as QuickCheck properties.
 category: Testing
 license: MIT
-copyright: (c) 2013 Simon Hengel
+copyright: (c) 2013-2017 Simon Hengel
 author: Simon Hengel <sol@typeful.net>
 maintainer: Simon Hengel <sol@typeful.net>
 
@@ -14,7 +14,7 @@ github: hspec/quickcheck-io
 
 ghc-options: -Wall
 dependencies:
-  - QuickCheck  >= 2.5.1
+  - QuickCheck  >= 2.7
   - HUnit       >= 1.2.5
   - base        == 4.*
 
